@@ -1,0 +1,17 @@
+{
+  "name": "rideshare-buddy-prototype",
+  "version": "0.0.1",
+  "repository": "git@github.com:kwcay/rideshare-buddy-prototype.git",
+  "author": "Frank <frank@kwcay.co>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "browser": "web-ext run --source-dir src --verbose",
+    "lint": "addons-linter src/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "addons-linter": "^1.19.0",
+    "web-ext": "^4.0.0"
+  }
+}
