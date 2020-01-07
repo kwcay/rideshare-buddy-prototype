@@ -1,5 +1,7 @@
-import * as utils from './utils';
+import * as utils from './utils.js';
 
-const parse = () => {
-  alert('test')
-};
+document.getElementById('parse-link').addEventListener('click', () => {
+  utils.getBookings((result) => console.log('bookings', result));
+});
+
+browser.tabs.executeScript({ file: './content.js' });

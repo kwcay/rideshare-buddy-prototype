@@ -10,11 +10,14 @@
     "48": "icon.svg",
     "96": "icon.svg"
   },
+  "permissions": [
+    "activeTab",
+    "tabs"
+  ],
   "content_scripts": [
     {
-      "matches": ["https://www.reservauto.net/Scripts/client/ReservationList.asp"],
-      "js": ["content.js"],
-      "run_at": "document_end"
+      "matches": ["https://www.reservauto.net/Scripts/client/ReservationList*"],
+      "js": ["content.js"]
     }
   ],
   "browser_action": {
