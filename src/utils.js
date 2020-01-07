@@ -10,7 +10,7 @@ export const getLanguage = () => navigator
 
 const isNumeric = (n) => !isNaN(parseFloat(n)) && isFinite(n);
 
-const getBookingsTab = () => new Promise((resolve, reject) => {
+const getTripsTab = () => new Promise((resolve, reject) => {
   const query = {
     url: 'https://www.reservauto.net/Scripts/client/ReservationList*',
   };
@@ -20,23 +20,21 @@ const getBookingsTab = () => new Promise((resolve, reject) => {
   WebExtensionsApi.tabs.query(query, selector);
 });
 
-export const getBookings = async (cb) => {
-  const bookings = [];
-  const bookingsTab = await getBookingsTab();
+export const getTrips = async (cb) => {
+  const trips = [];
+  const tripsTab = await getTripsTab();
 
-  if (!bookingsTab) {
+  if (!tripsTab) {
     return [];
   }
 
-  console.log('Sending message to... ', bookingsTab)
+  console.log('Sending message to... ', tripsTab)
 
-  const response = await WebExtensionsApi.tabs.sendMessage(bookingsTab.id, {
+  const response = await WebExtensionsApi.tabs.sendMessage(tripsTab.id, {
     request: 'get-bookings',
   });
 
   console.log('response from content.js', response)
 
-  // console.log('doc', doc, doc.querySelectorAll('.tblReservations tr')
-
-  return bookings;
+  return trips;
 };

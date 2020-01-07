@@ -2,7 +2,7 @@
  * 
  */
 
-const parseBookingRow = (row) => {
+const parseTripRow = (row) => {
   if (!row || !row.children) {
     return null;
   }
@@ -19,11 +19,11 @@ const parseBookingRow = (row) => {
 };
 
 (browser || chrome).runtime.onMessage.addListener(message => {
-  const bookings = [];
+  const trips = [];
 
   document
     .querySelectorAll('.tblReservations tr')
-    .forEach(row => bookings.push(parseBookingRow(row)));
+    .forEach(row => trips.push(parseTripRow(row)));
 
-  return Promise.resolve(bookings);
+  return Promise.resolve(trips);
 });
