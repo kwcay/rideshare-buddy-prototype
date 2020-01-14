@@ -1,14 +1,35 @@
+<!-- Copyright (c) 2020-present, Kwahu & Cayes. -->
 <!doctype html>
 <html>
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="./popup.css" />
   </head>
   <body>
-    <a href="https://www.reservauto.net/Scripts/client/ReservationList.asp?ShowPopup=false&OrderBy=1&ReservationStatus=2">Reservations</a>
-    <br>
-    <br>
+    <article id="view-bookings-page" class="hidden">
+      <span>Go to</span>
+      <a href="javascript:;">Bookings</a href="javascript:;">
+    </article>
+
+    <article id="parse-bookings-page" class="hidden">
+      <a href="javascript:;">Parse</a href="javascript:;">
+    </article>
+
+    <article id="loading-page">
+      Loading...
+    </article>
+
+    <article id="error-page" class="hidden" data-return-page="loading">
+      <h1>Something went wrong.</h1>
+
+      <div>
+        <button>Report &amp; dismiss</button>
+        <button>Ignore &amp; dismiss</button>
+      </div>
+    </article>
     
-    <a id="parse-link" href="javascript:;">Parse</a>
-    <script type="module" src="./popup.js"></script>
+    <script src="./constants.js"></script>
+    <script src="./utils/page.js"></script>
+    <script src="./popup.js"></script>
   </body>
 </html>
