@@ -5,10 +5,11 @@
 (async () => {
   document.querySelector('#parse-bookings-page a').addEventListener('click', async () => {
     try {
-      const trips = await getTrips();
+      const trips = await getTripsFromTab();
       console.log('Trip details: ', trips);
     } catch (error) {
-      showErrorPage('parse-bookings');
+      console.error(error);
+      showErrorPage('parse-bookings', 'Could not retrieve trip data.');
     }
   });
   
@@ -29,8 +30,7 @@
     await getTripsTab();
     setActivePage('parse-bookings');
   } catch (error) {
+    logger.debug('[popup.js] trips tab not found... redirecting to view-bookings');
     setActivePage('view-bookings');
   }
 })();
-
-console.log('popup.js loaded.');

@@ -11,17 +11,29 @@
     "96": "icon.svg"
   },
   "permissions": [
+    "storage",
     "tabs",
     "https://*.reservauto.net/*"
   ],
   "content_security_policy": "script-src 'self' https://*.reservauto.net; object-src 'self'",
+  "background": {
+    "scripts": [
+      "utils/constants.js",
+      "utils/logger.js",
+      "utils/store.js",
+      "utils/trips.js",
+      "background.js"
+    ]
+  },
   "content_scripts": [
     {
       "matches": ["https://www.reservauto.net/Scripts/client/ReservationList*"],
       "js": [
-        "constants.js",
-        "contentUtils.js",
-        "contentMessages.js",
+        "utils/constants.js",
+        "utils/logger.js",
+        "utils/store.js",
+        "utils/communauto.js",
+        "contentScripts/communauto.js",
         "content.js"
       ]
     }

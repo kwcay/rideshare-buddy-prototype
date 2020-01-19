@@ -4,7 +4,7 @@
 
 (WebExt => {
   if (!WebExt) {
-    return console.error('WebExtensions API not found.');
+    return logger.error('WebExtensions API not found.');
   }
 
   messageListeners.forEach(listener => WebExt
@@ -13,5 +13,3 @@
     .addListener(listener));
 
 })(browser || chrome);
-
-console.log('content.js loaded.');

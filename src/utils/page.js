@@ -11,32 +11,8 @@ const setActivePage = pageName => {
   document.querySelector(`#${pageName}-page`).classList.remove('hidden');
 };
 
-const showErrorPage = returnPage => {
+const showErrorPage = (returnPage, errorMsg) => {
+  document.querySelector('#error-page').dataset.returnPage = returnPage;
+  document.querySelector('#error-page p').innerHTML = errorMsg;
   setActivePage('error');
-  document.querySelector(`#error-page`).dataset.returnPage = returnPage;
-};
-
-/**
- * Selects the trip tab in the browser.
- */
-const getTripsTab = () => new Promise((resolve, reject) => {
-  const query = {
-    currentWindow: true,
-    url: 'https://www.reservauto.net/Scripts/client/ReservationList*',
-  };
-
-  const selector = tabs => tabs && tabs.length
-    ? resolve(tabs[tabs.length - 1])
-    : reject('Trips tab not found.');
-  
-  WebExt.tabs.query(query, selector);
-});
-
-const getTrips = async () => {
-  const tripsTab = await getTripsTab();
-  const trips = await WebExt.tabs.sendMessage(tripsTab.id, {
-    request: REQUEST_TRIPS_DATA,
-  });
-
-  return Promise.resolve(trips);
 };
